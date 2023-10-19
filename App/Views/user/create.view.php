@@ -13,6 +13,12 @@
                 <label for="last_name">Last Name:</label>
                 <input type="text" class="form-control" id="last_name" name="last_name" required>
             </div>
+
+            <div class="form-group mt-2">
+                <label for="email">Email:</label>
+                <input type="email" class="form-control" id="email" name="email" required>
+            </div>
+
             <div class="form-group mt-2">
                 <label for="birthdate">Date of Birth:</label>
                 <input type="date" class="form-control" id="birthdate" name="birthdate" required>

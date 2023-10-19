@@ -6,7 +6,11 @@ class Orm
 
     public function __construct($model)
     {
+        
         $this->model = $model;
+        if(!isset($_SESSION[$this->model])){
+            $_SESSION[$this->model] = [];
+        }
     }
 
     public function getById($id){
@@ -18,11 +22,20 @@ class Orm
         return null;
     }
 
+    public function getByUsername($username){
+        foreach($_SESSION[$this->model] as $item){
+            if($item['username']==$username){
+                return $item;
+            }
+        }
+        return null;
+    }
+
     public function getAll(){
         return $_SESSION[$this->model];
     }
 
-    public function create($item){
+    public function store($item){
         $_SESSION[$this->model][] = $item;
     }
 
@@ -38,7 +51,7 @@ class Orm
 
     public function update($data){
         foreach($_SESSION[$this->model] as $key => $item){
-            if($item['id']==$data['id']){
+            if($item['username']==$data['username']){
                 $_SESSION[$this->model][$key] = $data;
                 return true;
             }
